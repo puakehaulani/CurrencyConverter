@@ -10,8 +10,7 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         justifyContent: 'space-between',
         alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: colors.white,
+        flexDirection: 'row'
     },
     title: {
         color: colors.text,
