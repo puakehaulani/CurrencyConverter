@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, SafeAreaView, StyleSheet, } from 'react-native';
 
+import colors from "../constants/colors"
+
 const styles = StyleSheet.create({
     row: {
         paddingHorizontal: 20,
@@ -8,10 +10,10 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        color: "#343434"
+        color: colors.text
     },
     separator: {
-        backgroundColor: "#E2E2E2",
+        backgroundColor: colors.border,
         height: StyleSheet.hairlineWidth,
         marginLeft: 20
     }
