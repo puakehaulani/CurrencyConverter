@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, StatusBar, Image, Dimensions } from 'react-native';
+import { ConversionInput } from '../components/ConversionInput';
 
 import colors from '../constants/colors';
 
@@ -35,6 +36,20 @@ export default () => {
                     resizeMode="contain" />
                 <Image source={require('../assets/images/logo.png')} style={styles.logo} resizeMode="contain" />
             </View>
+
+            <ConversionInput
+                text="USD"
+                value="123"
+                onButtonPress={() => alert('todo!')}
+                keyboardType="numeric"
+                onChangeText={(text) => console.log("text", text)}
+            />
+
+            <ConversionInput
+                text="GBP"
+                value="123"
+                onButtonPress={() => alert('todo!')}
+            />
         </View>
     )
 }
