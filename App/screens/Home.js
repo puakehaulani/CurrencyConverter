@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, StatusBar, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, StatusBar, Image, Dimensions, Text } from 'react-native';
 import { ConversionInput } from '../components/ConversionInput';
+import { format } from 'date-fns';
 
 import colors from '../constants/colors';
 
@@ -24,10 +25,28 @@ const styles = StyleSheet.create({
         position: "absolute",
         width: screen.width * 0.25,
         height: screen.width * 0.25
+    },
+    textHeader: {
+        color: colors.white,
+        fontWeight: "bold",
+        fontSize: 30,
+        marginVertical: 20,
+        textAlign: "center"
+
+    },
+    text: {
+        color: colors.white,
+        fontSize: 14,
+        textAlign: "center"
     }
 })
 
 export default () => {
+    const baseCurrency = 'USD';
+    const quoteCurrency = 'GPB';
+    const conversionRate = 0.8345;
+    const date = '2021-03-18';
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
@@ -36,9 +55,9 @@ export default () => {
                     resizeMode="contain" />
                 <Image source={require('../assets/images/logo.png')} style={styles.logo} resizeMode="contain" />
             </View>
-
+            <Text style={styles.textHeader}>Currency Converter</Text>
             <ConversionInput
-                text="USD"
+                text={baseCurrency}
                 value="123"
                 onButtonPress={() => alert('todo!')}
                 keyboardType="numeric"
@@ -46,11 +65,17 @@ export default () => {
             />
 
             <ConversionInput
-                text="GBP"
+                text={quoteCurrency}
                 value="123"
                 editable={false}
                 onButtonPress={() => alert('todo!')}
             />
+            <Text style={styles.text}>
+                {`1 ${baseCurrency} = ${conversionRate} ${quoteCurrency} as of ${format(
+                    new Date(date),
+                    'MMM do, yyyy'
+                )}`}
+            </Text>
         </View>
     )
 }
