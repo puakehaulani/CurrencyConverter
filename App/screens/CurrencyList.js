@@ -1,10 +1,22 @@
 import React from 'react';
-import { StatusBar, FlatList, View } from 'react-native';
+import { StatusBar, FlatList, View, StyleSheet } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
+import { Entypo } from "@expo/vector-icons";
 
 import currencies from '../data/currencies.json';
 import { RowItem, RowSeparator } from '../components/RowItem';
 import colors from '../constants/colors';
+
+const styles = StyleSheet.create({
+    icon: {
+        width: 30,
+        height: 30,
+        backgroundColor: colors.blue,
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "center"
+    }
+})
 
 export default ({ navigation }) => {
     const insets = useSafeArea();
@@ -26,6 +38,11 @@ export default ({ navigation }) => {
                             onPress={() => {
                                 navigation.pop();
                             }}
+                            rightIcon={
+                                <View style={styles.icon}>
+                                    <Entypo name="check" size={20} color={colors.white} />
+                                </View>
+                            }
                         />
                     );
                 }}
