@@ -6,15 +6,15 @@ import Home from '../screens/Home';
 import Options from '../screens/Options';
 
 const MainStack = createStackNavigator();
-const MainStackScreen = () => {
+const MainStackScreen = () => (
     <MainStack.Navigator>
         <MainStack.Screen name="Home" component={Home} />
         <MainStack.Screen name="Options" component={Options} />
     </MainStack.Navigator>
-};
+);
 
-export default () => {
+export default () => (
     <NavigationContainer>
-        <MainStackScreen></MainStackScreen>
+        <MainStackScreen />
     </NavigationContainer>
-}
+);
