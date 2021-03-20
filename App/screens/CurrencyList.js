@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ({ navigation }) => {
+export default ({ navigation, route = {} }) => {
+    const params = route.params || {};
     const insets = useSafeArea();
 
     return (
@@ -32,6 +33,7 @@ export default ({ navigation }) => {
             <FlatList
                 data={currencies}
                 renderItem={({ item }) => {
+                    const selected = params.activeCurrency === item;
                     return (
                         <RowItem
                             title={item}
@@ -39,9 +41,11 @@ export default ({ navigation }) => {
                                 navigation.pop();
                             }}
                             rightIcon={
-                                <View style={styles.icon}>
-                                    <Entypo name="check" size={20} color={colors.white} />
-                                </View>
+                                selected && (
+                                    <View style={styles.icon}>
+                                        <Entypo name="check" size={20} color={colors.white} />
+                                    </View>
+                                )
                             }
                         />
                     );
