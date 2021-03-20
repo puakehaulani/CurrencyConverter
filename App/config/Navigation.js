@@ -15,18 +15,30 @@ const MainStackScreen = () => (
             options={{ headerShown: false }}
         />
         <MainStack.Screen name="Options" component={Options} />
-        <MainStack.Screen
+
+    </MainStack.Navigator>
+);
+
+const ModalStack = createStackNavigator();
+const ModalStackScreen = () => (
+    <ModalStack.Navigator mode="modal">
+        <ModalStack.Screen
+            name="Main"
+            component={MainStackScreen}
+            options={{ headerShown: false }}
+        />
+        <ModalStack.Screen
             name="CurrencyList"
             component={CurrencyList}
             options={({ route }) => ({
-                title: route.params.title,
+                title: route.params && route.params.title,
             })}
         />
-    </MainStack.Navigator>
+    </ModalStack.Navigator>
 );
 
 export default () => (
     <NavigationContainer>
-        <MainStackScreen />
+        <ModalStackScreen />
     </NavigationContainer>
 );
