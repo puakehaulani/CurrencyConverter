@@ -1,10 +1,14 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Entypo } from '@expo/vector-icons';
 
 import Home from '../screens/Home';
 import Options from '../screens/Options';
 import CurrencyList from '../screens/CurrencyList';
+import colors from "../constants/colors";
+import { color } from 'react-native-reanimated';
 
 const MainStack = createStackNavigator();
 const MainStackScreen = () => (
@@ -30,8 +34,14 @@ const ModalStackScreen = () => (
         <ModalStack.Screen
             name="CurrencyList"
             component={CurrencyList}
-            options={({ route }) => ({
+            options={({ route, navigation }) => ({
                 title: route.params && route.params.title,
+                headerLeft: null,
+                headerRight: () => (
+                    <TouchableOpacity onPress={() => navigation.pop()}>
+                        <Entypo name="cross" size={30} color={colors.blue} />
+                    </TouchableOpacity>
+                )
             })}
         />
     </ModalStack.Navigator>
